@@ -296,7 +296,7 @@ void DrawMatrix(TH2D* h,TH2D* h_example,string title,std::string plotdir,bool us
             string text = std::to_string(content);        
             if(abs(content) < 1e-4 || abs(content) > 1e4){
                int OM = floor(log10(abs(content)));               
-               text = to_string_with_precision(content*pow(10,-OM),2) + " #times 10^{" + OM + "}";
+               text = to_string_with_precision(content*pow(10,-OM),2) + " #times 10^{" + std::to_string(OM) + "}";
             }
             if(abs(content) < 1e-10) text = std::to_string(0);
             auto t = new TLatex(h->GetXaxis()->GetBinCenter(i),h->GetYaxis()->GetBinCenter(j),text.c_str());
