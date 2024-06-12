@@ -66,9 +66,9 @@ struct Event {
 	std::vector<RecoParticle> TracklikePrimaryDaughters;
 	std::vector<RecoParticle> ShowerlikePrimaryDaughters;
 
-	int TrueMuonIndex;
-	int TrueDecayProtonIndex;
-	int TrueDecayPionIndex;
+	int TrueMuonIndex = -1;
+	int TrueDecayProtonIndex = -1;
+	int TrueDecayPionIndex = -1;
 
 	// Muon, proton and pion candidates
 	RecoParticle MuonCandidate;

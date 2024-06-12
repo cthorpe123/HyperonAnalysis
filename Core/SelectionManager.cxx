@@ -224,11 +224,11 @@ void SelectionManager::SetSignal(Event &e){
    for(size_t i_tr=0;i_tr<e.TracklikePrimaryDaughters.size();i_tr++){
       if(e.TracklikePrimaryDaughters.at(i_tr).HasTruth && e.TracklikePrimaryDaughters.at(i_tr).TrackTruePDG == 2212 && e.TracklikePrimaryDaughters.at(i_tr).TrackTrueOrigin == 2){ 
          found_proton = true; 
-         e.TrueDecayProtonIndex = i_tr; 
+         e.TrueDecayProtonIndex = e.TracklikePrimaryDaughters.at(i_tr).Index; 
       }
       if(e.TracklikePrimaryDaughters.at(i_tr).HasTruth && e.TracklikePrimaryDaughters.at(i_tr).TrackTruePDG == -211 && e.TracklikePrimaryDaughters.at(i_tr).TrackTrueOrigin == 2){
          found_pion = true;
-         e.TrueDecayPionIndex = i_tr; 
+         e.TrueDecayPionIndex = e.TracklikePrimaryDaughters.at(i_tr).Index; 
       }
    }
 
