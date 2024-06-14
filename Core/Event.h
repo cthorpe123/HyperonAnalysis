@@ -97,6 +97,8 @@ struct Event {
         vector<string> SysDials;
         vector<vector<vector<double>>> SysWeights;
 
+	std::vector<RecoParticle> RepassTracklikePrimaryDaughters;
+
         void Print(){ std::cout << run << "  " << subrun << "  " << event << std::endl; }
 
 };

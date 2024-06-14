@@ -163,8 +163,10 @@ void EventAssembler::SetFile(string infilename,string sampletype){
    t_in->SetBranchAddress("SysDials", &SysDials);
    t_in->SetBranchAddress("SysWeights", &SysWeights);
    }
-   // Get the metadata tree
 
+   t_in->SetBranchAddress("RepassTracklikePrimaryDaughters",&RepassTracklikePrimaryDaughters);
+
+   // Get the metadata tree
    f_in->GetObject("ana/MetaTree",t_meta);
    t_meta->SetBranchAddress("POT",&POT);
 }
@@ -293,6 +295,8 @@ Event EventAssembler::GetEvent(int i){
    e.SysDials = *SysDials;
    e.SysWeights = *SysWeights;
    }
+
+   e.RepassTracklikePrimaryDaughters = *RepassTracklikePrimaryDaughters;
 
    return e;
 }

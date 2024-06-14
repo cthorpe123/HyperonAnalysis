@@ -406,7 +406,15 @@ bool SelectionManager::ChooseProtonPionCandidates(Event &e,bool cheat){
 
    std::pair<int,int> candidates;
 
-   if(cheat) candidates = a_SelectorBDTManager.NominateTracksCheat(e);
+   if(cheat){
+     int i_proton_candidate=-1;
+     int i_pion_candidate=-1;
+     for(size_t i_tr=0;i_tr<e.TracklikePrimaryDaughters.size();i_tr++){
+       if(e.TracklikePrimaryDaughters.at(i_tr).Index == e.TrueDecayProtonIndex) i_proton_candidate = i_tr;
+       if(e.TracklikePrimaryDaughters.at(i_tr).Index == e.TrueDecayPionIndex) i_pion_candidate = i_tr;
+     }
+     candidates = {i_proton_candidate,i_pion_candidate};
+   }
    else candidates = a_SelectorBDTManager.NominateTracks(e);
 
    bool passed = candidates.first != -1 && candidates.second != -1;
